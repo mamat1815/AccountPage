@@ -1,6 +1,7 @@
 package com.afsar.accountpage
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -33,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -68,6 +70,8 @@ fun CreateAccount(isDarkMode: Boolean, onThemeChange: () -> Unit) {
     var selectedGender by remember { mutableStateOf(genderOptions[0]) }
     var agreedToTerms by remember { mutableStateOf(false) }
     var passwordVisible by remember { mutableStateOf(false) }
+
+    val context = LocalContext.current
 
     Scaffold(
         floatingActionButton = {
@@ -193,7 +197,9 @@ fun CreateAccount(isDarkMode: Boolean, onThemeChange: () -> Unit) {
                     Text("Clear")
                 }
                 Button(
-                    onClick = {},
+                    onClick = {
+                        Toast.makeText(context, "First Name: $firstName\nLast Name: $lastName\nUsername: $username\nGender: $selectedGender", Toast.LENGTH_SHORT).show()
+                    },
                     modifier = Modifier.weight(1f),
                     enabled = agreedToTerms
                 ) {
