@@ -126,7 +126,7 @@ fun CreateAccount(isDarkMode: Boolean, onThemeChange: () -> Unit) {
                 onValueChange = {
                     username = it
                 },
-                label = { Text("Username") },
+                label = { Text("Username Uqi") },
                 modifier = Modifier.fillMaxWidth()
             )
 
